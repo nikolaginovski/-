@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8">
+    <title>IDEJA – Производ</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .product-page {
+            display: flex;
+            gap: 40px;
+            padding: 50px 6%;
+            background: #fff;
+            border-radius: 20px;
+            margin: 30px 6%;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .product-large {
+            width: 50%;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .product-info {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .back-btn {
+            background: var(--blue);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 12px;
+            width: 160px;
+            text-align: center;
+            cursor: pointer;
+            margin-bottom: 20px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .back-btn:hover {
+            background: var(--pink);
+        }
+
+        #prodDesc {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            line-height: 1.5rem;
+            color: #444;
+        }
+
+        @media (max-width: 820px) {
+            .product-page {
+                flex-direction: column;
+            }
+            .product-large, .product-info {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="logo-container">
+        <img src="logo.jpg" alt="logo">
+        <h1>Идеја</h1>
+    </div>
+    <nav>
+        <a onclick="window.location.href='index.html'">Почетна</a>
+    </nav>
+</header>
+
+<!-- PRODUCT PAGE -->
+<div class="product-page">
+
+    <img id="prodImage" class="product-large">
+
+    <div class="product-info">
+        <div class="back-btn" onclick="window.location.href='index.html'">← Назад</div>
+
+        <h2>Детален приказ</h2>
+        <div id="prodDesc"></div>
+    </div>
+
+</div>
+
+<!-- MAIN JS -->
+<script src="script.js"></script>
+
+<!-- PRODUCT LOGIC -->
+<script>
+    // READ IMAGE NAME FROM URL
+    const params = new URLSearchParams(window.location.search);
+    const file = params.get("img");
+
+    document.getElementById("prodImage").src = file;
+    document.getElementById("prodDesc").innerHTML = generateDescription(file);
+</script>
+
+</body>
+</html>
