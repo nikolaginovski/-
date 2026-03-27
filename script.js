@@ -1,263 +1,638 @@
-// ===============================
-// IDEJA — FULL PRODUCT DATABASE
-// Toys + Home Products
-// ===============================
+/* =============================================
+   UGEJA – script.js
+   Products, Cart, Login/Discount System
+   ============================================= */
 
-// ===============================
-// 1) TOYS IMAGES (41 items)
-// ===============================
-
-const TOY_IMAGES = [
-"TOYS/0125A7C4-03BD-42C8-90BC-9F7D4FAEB64A.jpg",
-"TOYS/092258DC-A021-4281-A077-FD656A96A8D8.jpg",
-"TOYS/0C9B314B-E8C2-46E0-AC89-2A02957662D3.jpg",
-"TOYS/0DED0EE4-F688-40D5-B084-311807DFAEB8.jpg",
-"TOYS/0F3BD296-A2EB-4C08-9C84-F838B24D1AA3.jpg",
-"TOYS/1635A311-E287-406A-AA3B-FEADE35C0242.jpg",
-"TOYS/1A637338-8F3E-4CEA-9062-0D8BDCE13656.jpg",
-"TOYS/1CDDC719-4BE3-49FA-8FA2-C0101AEE4B8D.jpg",
-"TOYS/1EAD244B-3BD9-40B2-9A1D-6FE446DD5F87.jpg",
-"TOYS/258FA4CA-965C-4BF1-A0DC-F317B3CB50C7.jpg",
-"TOYS/2F9B1B98-EEAA-4FD3-9A9C-C7BFBD85AB8D.jpg",
-"TOYS/380E0F3B-D1B1-4921-918B-4CF35A53B0B2.jpg",
-"TOYS/4397E565-3AE5-4D39-B621-A9220A86016A.jpg",
-"TOYS/4BE21254-35BE-4CE7-982A-6BD8E3F4BEFB.jpg",
-"TOYS/59D68F23-2D99-4B85-B0DF-6DA466E8921D.jpg",
-"TOYS/72338A03-C889-4F05-8FB6-F7554C30CFDA.jpg",
-"TOYS/7A6F6B5B-E720-49CD-942B-1E0EC97C6486.jpg",
-"TOYS/8B4EC71D-005C-4D04-AEA4-07FEF4F97585.jpg",
-"TOYS/8B4F0B08-B111-4CF6-A1ED-D02C2ED5D4EF.jpg",
-"TOYS/93EAEC0D-72D4-4220-B167-7A4BCF70FE0A.jpg",
-"TOYS/94CD16F4-157E-4C19-BF84-C62051536965.jpg",
-"TOYS/96AC5423-58DE-47F3-AD37-42098581B88E.jpg",
-"TOYS/96CB116F-BD0D-4B22-9BBF-CC8DAFD79764.jpg",
-"TOYS/9B09CEBB-9AD7-42A1-854C-36B927CA55F7.jpg",
-"TOYS/A1EAB55B-4651-4F22-9207-AE3836182578.jpg",
-"TOYS/A362ADB7-1847-4694-8F68-6596DF007E47.jpg",
-"TOYS/A9652D83-7EBC-4B88-B41D-84539CC7A90B.jpg",
-"TOYS/ACCDAF52-61DA-4997-A9D6-B7FC648E9DED.jpg",
-"TOYS/C9F860AA-4657-461C-A1BD-4851581E930B.jpg",
-"TOYS/CC75E77A-0B80-4DDF-8A61-03BA20C1B50C.jpg",
-"TOYS/D1AF3ADB-8D9B-4065-A927-E039BDF77BA0.jpg",
-"TOYS/D39F5AB0-B4EB-4B15-A548-3323C2387F7C.jpg",
-"TOYS/D833E941-801F-41A7-8C4C-E88A634B017C (1).jpg",
-"TOYS/DA667556-48F6-4B6B-8CCA-A496F7A0C281.jpg",
-"TOYS/DAF3CD09-B5E3-4027-9417-56E1E280E0C2.jpg",
-"TOYS/DDBF8DDD-1E14-4403-836B-132977A08DAF.jpg",
-"TOYS/DDF3FA5C-C457-49B8-B078-8383B0181CA5.jpg",
-"TOYS/E8177E25-014E-4D87-ACCB-B63AB6618446 (1).jpg",
-"TOYS/E87EB69B-3C5B-400E-8837-ED498ABC0883 (1).jpg",
-"TOYS/IMG_0538.jpg",
-"TOYS/IMG_3854.jpg"
+// ── PRODUCT DATA ──────────────────────────────
+// Add your real image filenames and prices here!
+const products = [
+  // TOYS
+  {
+    id: 1, category: "toys",
+    name: "Едукативна Играчка – Сортер",
+    price: 590,
+    img: "toy1.jpg",
+    badge: "new",
+    description: "Квалитетна едукативна играчка за деца од 1–3 години. Помага при развој на фини моторни вештини и препознавање бои и форми."
+  },
+  {
+    id: 2, category: "toys",
+    name: "Кукла со Облека",
+    price: 890,
+    img: "toy2.jpg",
+    badge: null,
+    description: "Прекрасна кукла со комплет облека. Идеален подарок за девојчиња. Материјалот е нетоксичен и безбеден за деца."
+  },
+  {
+    id: 3, category: "toys",
+    name: "Конструктор – Коцки",
+    price: 750,
+    img: "toy3.jpg",
+    badge: null,
+    description: "Сет со 100 коцки во различни форми и бои. Ја поттикнува креативноста и просторното размислување кај деца."
+  },
+  {
+    id: 4, category: "toys",
+    name: "Тркачко Возило RC",
+    price: 1490,
+    img: "toy4.jpg",
+    badge: "sale",
+    description: "Радио-контролирано тркачко возило со брзина до 20 км/ч. Батерија за 40+ минути играање. Возраст: 6+."
+  },
+  // CHRISTMAS
+  {
+    id: 5, category: "christmas",
+    name: "Новогодишна Елка 120cm",
+    price: 1990,
+    img: "xmas1.jpg",
+    badge: "sale",
+    description: "Вештачка новогодишна елка 120 cm со реалистичен изглед. Лесна за склопување. Вклучени украсни гранки."
+  },
+  {
+    id: 6, category: "christmas",
+    name: "Фигура Дедо Мраз 60cm",
+    price: 890,
+    img: "xmas2.jpg",
+    badge: "sale",
+    description: "Декоративна фигура на Дедо Мраз висока 60 cm. Идеална за дом, изложбен простор или деловни простории."
+  },
+  {
+    id: 7, category: "christmas",
+    name: "Украсни Светла LED",
+    price: 490,
+    img: "xmas3.jpg",
+    badge: null,
+    description: "10 метри LED светла со 8 режими на светкање. Енергетски ефикасни, безбедни за употреба во затворен и отворен простор."
+  },
+  {
+    id: 8, category: "christmas",
+    name: "Новогодишна Елка 180cm",
+    price: 3490,
+    img: "xmas4.jpg",
+    badge: null,
+    description: "Луксузна вештачка елка 180 cm со густи гранки и меморија-жица. Огнеотпорен материјал, издржлива за повеќе сезони."
+  },
+  // HOME
+  {
+    id: 9, category: "home",
+    name: "Декоративни Перници – Сет 2",
+    price: 690,
+    img: "home1.jpg",
+    badge: null,
+    description: "Сет од 2 декоративни перници со преклопни навлаки. Меки, удобни и лесни за одржување. Достапни во повеќе бои."
+  },
+  {
+    id: 10, category: "home",
+    name: "Ароматична Свеќа – Лаванда",
+    price: 390,
+    img: "home2.jpg",
+    badge: "new",
+    description: "Рачно правена ароматична свеќа со мирис на лаванда. Гори до 40 часа. Совршен подарок или украс за дом."
+  },
+  {
+    id: 11, category: "home",
+    name: "Рамка за Слика 30×40",
+    price: 290,
+    img: "home3.jpg",
+    badge: null,
+    description: "Елегантна дрвена рамка за слика во формат 30×40 cm. Природен дрвен материјал, достапна во светло и темно дрво."
+  },
+  {
+    id: 12, category: "home",
+    name: "Кујнски Сет – Садови",
+    price: 1290,
+    img: "home4.jpg",
+    badge: null,
+    description: "Сет од 5 кујнски садови со антилепачки премаз. Соодветни за индукциски шпорет. Со стаклени капаци и силиконски рачки."
+  },
 ];
-// ===============================
-// 2) HOME IMAGES — PART 1
-// ===============================
 
-const HOME_IMAGES = [
-"HOME/00734CDA-0135-4019-B2A7-EB4AD01D7DE7 (1).jpg",
-"HOME/00734CDA-0135-4019-B2A7-EB4AD01D7DE7.jpg",
-"HOME/048F98E9-6B47-4D98-B947-131B9EFA7601.jpg",
-"HOME/0A160E46-F7E3-43E6-91DC-5342E221AE26.jpg",
-"HOME/10422065-8334-43F2-A928-CBDA0EFC783B.jpg",
-"HOME/109D7276-2C1B-49DD-A72C-305D9BABA41E.jpg",
-"HOME/1101742A-6DFF-4933-89E1-C26B22AA8E25.jpg",
-"HOME/110F39A8-C4C9-4BBA-BEB7-406A93C68965.jpg",
-"HOME/13E15448-7C07-458F-B5A1-DA3281036A3F.jpg",
-"HOME/14339009-09FD-48A4-8F65-DB00B4EE64CC.jpg",
-"HOME/14AF8499-C462-4317-A1DC-9AE94FE35B81.jpg",
-"HOME/16C30453-331F-4CB4-8D5A-0D729DECE4A5.jpg",
-"HOME/1B3FE782-E44A-47FB-92F0-674FD21388D1.jpg",
-"HOME/1EB21B60-6C19-494D-AF91-AF7FEFB6BB40.jpg",
-"HOME/264873DB-9F86-449B-ACC2-4FE023C52F2B.jpg",
-"HOME/2C81F277-D74A-42CC-877E-5B3B99BB6129.jpg",
-"HOME/2f07ece48c974b9fda99b5cdc8401964.jpg",
-"HOME/2F2A6415-38E0-4778-9A6F-C7638EE4399A.jpg",
-"HOME/32129C8C-5CED-4A1D-832E-F88600AD7CEF.jpg",
-"HOME/37779E2D-7EE5-47AE-955E-37E6E780E39E.jpg",
-"HOME/38DED82E-77A3-499B-ABE3-589A0B161D7F (1).jpg",
-"HOME/39AC1CD6-2389-49D3-99E9-B535C3504ABA.jpg",
-"HOME/39D3EFB2-59B3-4364-8076-DA5D2946E787.jpg",
-"HOME/3EE44EB9-3795-41C0-89AB-983816B98A62.jpg",
-"HOME/43E3752C-5F65-4913-ABC4-24A61AF895F8.jpg",
-"HOME/444534B9-2BD2-4969-A2EE-8D99B49416B9.jpg",
-"HOME/4B14EB60-751C-4BFB-8FD9-9CA7A20E0C8B.jpg",
-"HOME/4E015349-D7D8-4F27-BD36-4D2C77F8A38F.jpg",
-"HOME/4E347928-9ECB-4A25-B464-E4DB596F2353.jpg",
-"HOME/4F4F0D7B-A918-4433-9DF3-0A3FEAA68A55.jpg",
-"HOME/540DF6EA-4311-424B-A277-075E8E0FA717.jpg",
-"HOME/54D0C749-1F7F-4EE1-AF51-69F2DA96AB70.jpg",
-"HOME/583E3AD8-62D5-4A2D-9093-F5235539CBB0.jpg",
-"HOME/58B14F6B-A1BE-42CA-AE47-6F63F7470B72.jpg",
-"HOME/592F9EDB-5922-44C0-BEE8-FECF7B70AAA3.jpg",
-"HOME/5B250444-DA13-4732-B731-9A1511F8E166.jpg",
-"HOME/5ECFFF3C-C7AF-41FA-8CCD-34CBF77D7DCB.jpg",
-"HOME/60A325FD-F7BB-4B76-83E2-192655CA13D6.jpg",
-"HOME/65E3A006-6365-4F8A-A2C3-7246647F8BE2.jpg",
-"HOME/65FF7924-9BBE-46A8-ABE1-8C6199D4511B.jpg",
-"HOME/66C6D923-836F-42DE-8885-2730E150B5B6.jpg",
-"HOME/6849AAC6-EA81-4924-81A3-31F4C9AC3C13.jpg",
-"HOME/6BC930B2-9523-47E5-B0BC-F00341200A51.jpg",
-"HOME/6C7E53C5-1BB5-4489-8C3A-39381C1E54AB.jpg",
-"HOME/6D481A0B-292F-44EE-8A71-798B90C5AAF5.jpg",
-"HOME/71A69AF8-67F6-400A-93B9-42C89D690980.jpg",
-"HOME/7231E03D-B46C-4ABC-8022-03E820A68EA4.jpg",
-"HOME/7943A577-5B15-459D-B0E3-DB83B0EBB898.jpg",
-"HOME/829AB652-8118-4D18-BF1D-7DE55B0C7EEB.jpg",
-"HOME/82B90B42-E008-413A-8CFE-D1DF06BE891B.jpg",
-"HOME/88FF243A-51DA-4DF6-974F-4CFFD2E4B751.jpg",
-"HOME/8E3E22EB-D6CF-4CAA-B176-74329754AB07.jpg",
-"HOME/9555403E-6318-43E6-8659-84E4D47AA853.jpg",
-"HOME/95F0354D-8636-4106-913D-EE9F513E8CC4.jpg",
-"HOME/96247299-4886-4525-AED5-57A47D9B096E.jpg",
-"HOME/9768BBEB-E14D-4D45-8E3E-54E096BD4198.jpg",
-"HOME/9C6CBFB7-1242-4902-9D53-2A6759A25CF1.jpg",
-"HOME/9E82159A-F880-4513-875C-1E67259D7821.jpg",
-"HOME/A02DD056-43DA-4F7D-94CD-25D0BBB4ACF3.jpg",
-"HOME/A12D56A0-D55B-404E-B31C-C2FF57AC26CD.jpg",
-"HOME/A1E2C061-4244-4977-8157-D724E1215066.jpg",
-"HOME/A7586898-A97F-48C5-8B0B-108023872B7D.jpg",
-"HOME/AA8854E2-F521-48DA-971A-3D0152110C2B.jpg",
-"HOME/AB17D4C6-1154-45E8-90DD-C514137BECD2.jpg",
-"HOME/ABE60F38-1868-4365-97F0-421EA14F154B.jpg",
-"HOME/B1D2B317-826C-4C82-9ECA-FE6D66F4E0D0.jpg",
-"HOME/B22D57BD-53EA-46F6-A85D-E7F4D64B1854.jpg",
-"HOME/B4DD3B8E-C41E-4104-977A-31F8C6095A1F.jpg",
-"HOME/B75336D3-5084-428B-A929-B0E49B887FF3.jpg",
-"HOME/B7D599A3-3411-44EF-AA81-B529C8F975A3.jpg",
-"HOME/B9BD7DB4-F54C-40E2-B22B-FF6A844CE607.jpg",
-"HOME/C024D833-3B52-4873-9D5D-737DC50ABBC4.jpg",
-"HOME/C1743342-EB51-4A2A-B0AF-1A1EB2502EFE.jpg",
-"HOME/C5C65F85-E5A4-472F-84DD-1290FD872DC1.jpg",
-"HOME/C82D02A5-3156-4E96-B04C-07994427196A.jpg",
-"HOME/CA0CACF5-DEB4-42EE-A2FA-C4281F3C214A.jpg",
-"HOME/CA2533B0-DAAC-48D6-8F39-8E400B5EB6F1.jpg",
-"HOME/CC8F6686-FF56-4D69-9EB0-356A728029EE.jpg",
-"HOME/CF9FD4F6-4C78-4074-B6F5-06BBB719B823.jpg"
+// ── AUTH SYSTEM ──────────────────────────────
+// Demo accounts (in real use, this would be a backend)
+// Passwords are stored as plain text here for demo - in production use hashing!
+const DEMO_ACCOUNTS = [
+  { username: "korisnik1", password: "demo123", name: "Марко" },
+  { username: "korisnik2", password: "test456", name: "Ана" },
 ];
-// ===============================
-// HOME IMAGES — PART 2 (FINAL)
-// ===============================
 
-HOME_IMAGES.push(
-"HOME/D0FF7224-1DFA-4842-B1D4-AFA6127066DB.jpg",
-"HOME/D238E589-2A5C-4A1A-81B2-C098F0743B1A.jpg",
-"HOME/D2B44F3F-AC7B-48D1-AF2C-D129A594BD60.jpg",
-"HOME/D30B47A7-2185-4D56-9C05-996FA3B9FAC3.jpg",
-"HOME/D75E3590-EACA-4D29-872A-306BC7B89FF4 (1).jpg",
-"HOME/DA2970C4-8E0D-4FC4-B31D-F2ABDF9D3C2E.jpg",
-"HOME/DB0C1380-51CF-48C6-8C5E-33AAF7E3B03A.jpg",
-"HOME/DEDFEF8D-6C8E-4DA5-B492-EA5FFDC08493.jpg",
-"HOME/DF39FCFB-8099-4EE3-97EC-BEEA5264ABE7.jpg",
-"HOME/DFC8A331-4E71-4BB4-8572-47CC2DEFB72B.jpg",
-"HOME/E073F0B0-FBF7-4C1F-8672-B917029EC3A0.jpg",
-"HOME/E5C2F6E3-BB5E-47BD-8B30-25262CC43F81.jpg",
-"HOME/e8231a3f5d94107134765f19dd2083de.jpg",
-"HOME/E88BA36B-2CE6-491D-BB9C-B1596F729707.jpg",
-"HOME/ECA0BD9B-1C23-48F2-9EBE-5C4BA0CD7235.jpg",
-"HOME/F1D63EA5-88A0-4B78-96C4-6C5518E4D916.jpg",
-"HOME/FD279C06-70C1-416C-BAF5-026619F91B35.jpg",
-"HOME/IMG_0515.jpg",
-"HOME/IMG_0518.jpg",
-"HOME/IMG_0520.jpg",
-"HOME/IMG_0523.jpg",
-"HOME/IMG_0524.jpg",
-"HOME/IMG_0526.jpg",
-"HOME/IMG_0528.jpg",
-"HOME/IMG_0533.jpg",
-"HOME/IMG_0534.jpg",
-"HOME/IMG_0535.jpg",
-"HOME/IMG_0536.jpg",
-"HOME/IMG_0537.jpg",
-"HOME/IMG_2341.jpg",
-"HOME/IMG_2342.jpg",
-"HOME/IMG_2343.jpg",
-"HOME/IMG_2344.jpg",
-"HOME/IMG_2345.jpg",
-"HOME/IMG_2347.jpg",
-"HOME/IMG_2349.jpg",
-"HOME/IMG_2350.jpg",
-"HOME/IMG_2351.jpg",
-"HOME/IMG_2858.jpg",
-"HOME/IMG_2859.jpg",
-"HOME/IMG_2860.jpg",
-"HOME/IMG_2861.jpg",
-"HOME/IMG_2862.jpg",
-"HOME/IMG_2863.jpg",
-"HOME/IMG_2864.jpg",
-"HOME/IMG_2865.jpg",
-"HOME/IMG_2866.jpg",
-"HOME/IMG_2867.jpg",
-"HOME/IMG_2868.jpg",
-"HOME/IMG_2870.jpg",
-"HOME/IMG_2871.jpg",
-"HOME/IMG_2872.jpg",
-"HOME/IMG_2873.jpg",
-"HOME/IMG_2874.jpg",
-"HOME/IMG_2875.jpg",
-"HOME/IMG_2876.jpg",
-"HOME/IMG_2877.jpg",
-"HOME/IMG_2878.jpg",
-"HOME/IMG_2879.jpg",
-"HOME/IMG_2880.jpg",
-"HOME/IMG_2881.jpg",
-"HOME/IMG_2882.jpg",
-"HOME/IMG_2883.jpg",
-"HOME/IMG_2884.jpg",
-"HOME/IMG_2885.jpg",
-"HOME/IMG_2886.jpg",
-"HOME/IMG_2889.jpg",
-"HOME/IMG_2890.jpg",
-"HOME/IMG_2891.jpg",
-"HOME/IMG_2893.jpg",
-"HOME/IMG_2894.jpg",
-"HOME/IMG_3737.jpg"
-);
-// ===============================
-// HELPER — Generate description
-// ===============================
-function generateDescription(filename) {
-    let clean = filename.replace(/\.jpg|\.png/gi, "");
+// Register stores new users in localStorage
+function getUsers() {
+  return JSON.parse(localStorage.getItem("ugeja_users") || "[]");
+}
+function saveUsers(users) {
+  localStorage.setItem("ugeja_users", JSON.stringify(users));
+}
 
-    return `
-        <p>This product is part of our IDEJA premium collection.</p>
-        <p>High-quality materials, carefully selected for home comfort.</p>
-        <p>Unique item ID: <b>${clean}</b></p>
+let currentUser = JSON.parse(localStorage.getItem("ugeja_currentUser") || "null");
+const DISCOUNT_RATE = 0.10; // 10%
+
+// ── CART STATE ────────────────────────────────
+let cart = JSON.parse(localStorage.getItem("ugeja_cart") || "[]");
+
+function saveCart() {
+  localStorage.setItem("ugeja_cart", JSON.stringify(cart));
+}
+
+function getCartTotal() {
+  return cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+}
+
+function getCartCount() {
+  return cart.reduce((sum, item) => sum + item.qty, 0);
+}
+
+// ── HELPER: FORMAT PRICE ──────────────────────
+function fmt(n) {
+  return n.toLocaleString("mk-MK") + " ден";
+}
+
+// ── TOAST NOTIFICATIONS ───────────────────────
+function showToast(msg, icon = "✓") {
+  const container = document.getElementById("toastContainer");
+  if (!container) return;
+  const t = document.createElement("div");
+  t.className = "toast";
+  t.innerHTML = `<span>${icon}</span> ${msg}`;
+  container.appendChild(t);
+  setTimeout(() => {
+    t.style.transition = "all 0.3s";
+    t.style.opacity = "0";
+    t.style.transform = "translateX(40px)";
+    setTimeout(() => t.remove(), 300);
+  }, 2800);
+}
+
+// ── PRODUCT CARD BUILDER ──────────────────────
+function buildCard(p) {
+  const discounted = currentUser ? p.price * (1 - DISCOUNT_RATE) : null;
+  const priceHTML = discounted
+    ? `<div class="card-price">${fmt(discounted)} <span class="original-price">${fmt(p.price)}</span></div>`
+    : `<div class="card-price">${fmt(p.price)}</div>`;
+
+  const badgeHTML = p.badge
+    ? `<div class="card-badge ${p.badge}">${p.badge === "sale" ? "🔥 Акција" : "Ново"}</div>`
+    : "";
+
+  const card = document.createElement("div");
+  card.className = "card";
+  card.innerHTML = `
+    ${badgeHTML}
+    <img src="${p.img}" alt="${p.name}" onerror="this.src='logo.jpg'">
+    <div class="card-body">
+      <div class="card-name">${p.name}</div>
+      ${priceHTML}
+      <button class="add-to-cart-btn" onclick="addToCart(${p.id}, event)">
+        🛒 Додај во корпа
+      </button>
+    </div>
+  `;
+  card.querySelector("img").addEventListener("click", () => openProduct(p));
+  return card;
+}
+
+function renderProducts() {
+  const toysGrid = document.getElementById("toysGrid");
+  const christmasGrid = document.getElementById("christmasGrid");
+  const homeGrid = document.getElementById("homeGrid");
+
+  if (!toysGrid) return; // not on index page
+
+  toysGrid.innerHTML = "";
+  christmasGrid.innerHTML = "";
+  homeGrid.innerHTML = "";
+
+  products.forEach((p, i) => {
+    const card = buildCard(p);
+    card.style.animationDelay = `${i * 0.06}s`;
+    if (p.category === "toys") toysGrid.appendChild(card);
+    else if (p.category === "christmas") christmasGrid.appendChild(card);
+    else if (p.category === "home") homeGrid.appendChild(card);
+  });
+}
+
+// ── OPEN PRODUCT PAGE ─────────────────────────
+function openProduct(p) {
+  const url = `product.html?id=${p.id}`;
+  window.location.href = url;
+}
+
+// ── CART FUNCTIONS ────────────────────────────
+function addToCart(productId, e) {
+  if (e) e.stopPropagation();
+  const p = products.find(x => x.id === productId);
+  if (!p) return;
+
+  const existing = cart.find(x => x.id === productId);
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.push({ id: p.id, name: p.name, price: p.price, img: p.img, qty: 1 });
+  }
+  saveCart();
+  updateCartUI();
+  showToast(`"${p.name}" додаден во корпата`, "🛒");
+
+  // Button flash
+  if (e) {
+    const btn = e.target.closest("button");
+    if (btn) {
+      btn.classList.add("added");
+      btn.textContent = "✓ Додадено!";
+      setTimeout(() => {
+        btn.classList.remove("added");
+        btn.innerHTML = "🛒 Додај во корпа";
+      }, 1500);
+    }
+  }
+}
+
+function removeFromCart(productId) {
+  cart = cart.filter(x => x.id !== productId);
+  saveCart();
+  updateCartUI();
+  renderCartItems();
+}
+
+function changeQty(productId, delta) {
+  const item = cart.find(x => x.id === productId);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) {
+    removeFromCart(productId);
+    return;
+  }
+  saveCart();
+  updateCartUI();
+  renderCartItems();
+}
+
+function updateCartUI() {
+  const badge = document.getElementById("cartBadge");
+  if (badge) {
+    const count = getCartCount();
+    badge.textContent = count;
+    badge.style.display = count > 0 ? "inline" : "none";
+  }
+}
+
+function renderCartItems() {
+  const container = document.getElementById("cartItems");
+  if (!container) return;
+
+  if (cart.length === 0) {
+    container.innerHTML = `
+      <div class="cart-empty">
+        <div class="empty-icon">🛒</div>
+        <p>Корпата е празна</p>
+        <p style="font-size:0.85rem;margin-top:6px;color:#aaa;">Додај производи за да купиш</p>
+      </div>`;
+    updateCartFooter();
+    return;
+  }
+
+  container.innerHTML = "";
+  cart.forEach(item => {
+    const div = document.createElement("div");
+    div.className = "cart-item";
+    div.innerHTML = `
+      <img src="${item.img}" alt="${item.name}" onerror="this.src='logo.jpg'">
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-price">${fmt(item.price)}</div>
+        <div class="cart-item-qty">
+          <button class="qty-btn" onclick="changeQty(${item.id}, -1)">−</button>
+          <span class="qty-num">${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
+        </div>
+      </div>
+      <button class="cart-item-remove" onclick="removeFromCart(${item.id})">✕</button>
     `;
+    container.appendChild(div);
+  });
+
+  updateCartFooter();
 }
 
-// ===============================
-// OPEN PRODUCT IN NEW TAB
-// ===============================
-function openProduct(filename) {
-    const url = `product.html?img=${encodeURIComponent(filename)}`;
-    window.open(url, "_blank");
+function updateCartFooter() {
+  const subtotalEl = document.getElementById("cartSubtotal");
+  const discountEl = document.getElementById("cartDiscount");
+  const totalEl = document.getElementById("cartTotal");
+  const savingsEl = document.getElementById("cartSavings");
+
+  const subtotal = getCartTotal();
+
+  if (subtotalEl) subtotalEl.textContent = fmt(subtotal);
+
+  if (currentUser && cart.length > 0) {
+    const savings = subtotal * DISCOUNT_RATE;
+    const total = subtotal - savings;
+    if (discountEl) discountEl.parentElement.style.display = "flex";
+    if (savingsEl) savingsEl.parentElement.style.display = "flex";
+    if (discountEl) discountEl.textContent = "-" + fmt(savings);
+    if (savingsEl) savingsEl.textContent = "-" + fmt(savings);
+    if (totalEl) totalEl.textContent = fmt(total);
+  } else {
+    if (discountEl) discountEl.parentElement.style.display = "none";
+    if (savingsEl) savingsEl.parentElement.style.display = "none";
+    if (totalEl) totalEl.textContent = fmt(subtotal);
+  }
 }
 
-// ===============================
-// RENDER PRODUCTS INTO GRID
-// ===============================
-function renderProducts(list, containerId) {
-    const container = document.getElementById(containerId);
-    container.innerHTML = "";
-
-    list.forEach(img => {
-        const card = document.createElement("div");
-        card.className = "product-card";
-
-        card.innerHTML = `
-            <img src="${img}" alt="product" onclick="openProduct('${img}')">
-            <button onclick="openProduct('${img}')">View Product</button>
-        `;
-
-        container.appendChild(card);
-    });
+function openCart() {
+  document.getElementById("cartOverlay").classList.add("open");
+  document.getElementById("cartSidebar").classList.add("open");
+  renderCartItems();
 }
 
-// ===============================
-// RENDER TOYS + HOME AUTOMATICALLY
-// ===============================
+function closeCart() {
+  document.getElementById("cartOverlay").classList.remove("open");
+  document.getElementById("cartSidebar").classList.remove("open");
+}
+
+// ── LOGIN / REGISTER ──────────────────────────
+function openLoginModal() {
+  document.getElementById("loginModal").classList.add("open");
+  document.getElementById("loginError").textContent = "";
+}
+
+function closeLoginModal() {
+  document.getElementById("loginModal").classList.remove("open");
+}
+
+function switchTab(tab) {
+  document.querySelectorAll(".modal-tab").forEach(t => t.classList.remove("active"));
+  document.querySelector(`[data-tab="${tab}"]`).classList.add("active");
+  document.getElementById("loginForm").style.display = tab === "login" ? "block" : "none";
+  document.getElementById("registerForm").style.display = tab === "register" ? "block" : "none";
+  document.getElementById("loginError").textContent = "";
+}
+
+function doLogin() {
+  const username = document.getElementById("loginUsername").value.trim();
+  const password = document.getElementById("loginPassword").value;
+  const errorEl = document.getElementById("loginError");
+
+  if (!username || !password) {
+    errorEl.textContent = "Внеси корисничко ime и лозинка.";
+    return;
+  }
+
+  // Check demo accounts + registered accounts
+  const allUsers = [...DEMO_ACCOUNTS, ...getUsers()];
+  const user = allUsers.find(u => u.username === username && u.password === password);
+
+  if (!user) {
+    errorEl.textContent = "Погрешно корисничко ime или лозинка.";
+    return;
+  }
+
+  currentUser = { username: user.username, name: user.name };
+  localStorage.setItem("ugeja_currentUser", JSON.stringify(currentUser));
+  closeLoginModal();
+  updateAuthUI();
+  renderProducts();
+  renderCartItems();
+  showToast(`Добредојде, ${user.name}! 10% попуст активиран 🎉`, "👤");
+}
+
+function doRegister() {
+  const name = document.getElementById("regName").value.trim();
+  const username = document.getElementById("regUsername").value.trim();
+  const password = document.getElementById("regPassword").value;
+  const errorEl = document.getElementById("loginError");
+
+  if (!name || !username || !password) {
+    errorEl.textContent = "Пополни ги сите полиња.";
+    return;
+  }
+  if (username.length < 3) {
+    errorEl.textContent = "Корисничкото ime мора да има минум 3 знаци.";
+    return;
+  }
+  if (password.length < 4) {
+    errorEl.textContent = "Лозинката мора да има минум 4 знаци.";
+    return;
+  }
+
+  const allUsers = [...DEMO_ACCOUNTS, ...getUsers()];
+  if (allUsers.find(u => u.username === username)) {
+    errorEl.textContent = "Ова корисничко ime веќе постои.";
+    return;
+  }
+
+  const users = getUsers();
+  users.push({ name, username, password });
+  saveUsers(users);
+
+  currentUser = { username, name };
+  localStorage.setItem("ugeja_currentUser", JSON.stringify(currentUser));
+  closeLoginModal();
+  updateAuthUI();
+  renderProducts();
+  renderCartItems();
+  showToast(`Успешна регистрација! Добредојде, ${name}! 10% попуст активиран 🎉`, "✓");
+}
+
+function doLogout() {
+  currentUser = null;
+  localStorage.removeItem("ugeja_currentUser");
+  updateAuthUI();
+  renderProducts();
+  renderCartItems();
+  showToast("Одјавен/а", "👋");
+}
+
+function updateAuthUI() {
+  const authArea = document.getElementById("authArea");
+  if (!authArea) return;
+
+  if (currentUser) {
+    authArea.innerHTML = `
+      <div class="user-chip" onclick="doLogout()" title="Клик за одјава">
+        👤 ${currentUser.name}
+        <span class="discount-tag">-10%</span>
+      </div>`;
+  } else {
+    authArea.innerHTML = `
+      <a class="login-nav-btn" onclick="openLoginModal()">🔑 Влези</a>`;
+  }
+}
+
+// ── CHECKOUT ──────────────────────────────────
+function doCheckout() {
+  if (cart.length === 0) {
+    showToast("Корпата е празна!", "⚠️");
+    return;
+  }
+
+  const subtotal = getCartTotal();
+  const discount = currentUser ? subtotal * DISCOUNT_RATE : 0;
+  const total = subtotal - discount;
+
+  let itemsHTML = cart.map(item => `
+    <div class="order-summary-item">
+      <span>${item.name} × ${item.qty}</span>
+      <span>${fmt(item.price * item.qty)}</span>
+    </div>
+  `).join("");
+
+  if (currentUser && discount > 0) {
+    itemsHTML += `
+      <div class="order-summary-item" style="color:#2ecc71;font-weight:700;">
+        <span>🎉 Попуст -10% (${currentUser.name})</span>
+        <span>-${fmt(discount)}</span>
+      </div>`;
+  }
+
+  const modal = document.getElementById("checkoutModal");
+  document.getElementById("checkoutItems").innerHTML = itemsHTML;
+  document.getElementById("checkoutTotal").textContent = fmt(total);
+
+  if (!currentUser) {
+    document.getElementById("checkoutLoginHint").style.display = "block";
+  } else {
+    document.getElementById("checkoutLoginHint").style.display = "none";
+  }
+
+  closeCart();
+  modal.classList.add("open");
+}
+
+function confirmCheckout() {
+  document.getElementById("checkoutModal").classList.remove("open");
+  cart = [];
+  saveCart();
+  updateCartUI();
+  renderCartItems();
+  showToast("Нарачката е поднесена! Ви благодариме 🙏", "✓");
+}
+
+// ── PRODUCT PAGE LOGIC ────────────────────────
+function loadProductPage() {
+  const params = new URLSearchParams(window.location.search);
+
+  // Support both ?id= (new) and ?img= (legacy)
+  const id = parseInt(params.get("id"));
+  const imgFile = params.get("img");
+
+  let p = null;
+
+  if (id) {
+    p = products.find(x => x.id === id);
+  }
+
+  if (!p && imgFile) {
+    // Legacy support
+    document.getElementById("prodImage").src = imgFile;
+    document.getElementById("prodImage").alt = imgFile;
+    document.getElementById("prodDesc").innerHTML = generateDescription(imgFile);
+    return;
+  }
+
+  if (p) {
+    document.getElementById("prodImage").src = p.img;
+    document.getElementById("prodImage").alt = p.name;
+    document.title = `Идеја – ${p.name}`;
+
+    const discountedPrice = currentUser ? p.price * (1 - DISCOUNT_RATE) : null;
+    const priceHTML = discountedPrice
+      ? `<div class="prod-price-large">${fmt(discountedPrice)} <span style="font-size:1rem;color:#aaa;text-decoration:line-through;font-family:Nunito,sans-serif;">${fmt(p.price)}</span></div>`
+      : `<div class="prod-price-large">${fmt(p.price)}</div>`;
+
+    document.getElementById("prodDesc").innerHTML = `
+      ${priceHTML}
+      <p>${p.description}</p>
+      <button class="add-to-cart-btn" style="margin-top:20px;padding:14px;font-size:1rem;border-radius:12px;" onclick="addToCartAndGoBack(${p.id})">
+        🛒 Додај во корпа
+      </button>
+    `;
+  }
+}
+
+function addToCartAndGoBack(id) {
+  addToCart(id, null);
+  setTimeout(() => window.location.href = "index.html", 800);
+}
+
+// ── LEGACY generateDescription ────────────────
+function generateName(file) {
+  return file.replace(/\.[^.]+$/, "").replace(/[-_]/g, " ");
+}
+
+function generateDescription(file) {
+  const name = generateName(file);
+  return `<strong>${name}</strong><br>Производ достапен во продавницата Идеја, Куманово.`;
+}
+
+// ── TRANSLATION ───────────────────────────────
+let lang = "mk";
+const translations = {
+  mk: {
+    toys: "Играчки",
+    christmas: "Christmas Sale 🎄",
+    home: "Производи за Дом",
+    heroTitle: "Играчки и производи за дом",
+    heroSub: "Квалитетни производи за секој дом и секое дете. Огромен избор на подароци, куќни декорации и играчки.",
+  },
+  en: {
+    toys: "Toys",
+    christmas: "Christmas Sale 🎄",
+    home: "Home Products",
+    heroTitle: "Toys & Home Products",
+    heroSub: "Quality products for every home and every child. Huge selection of gifts, home decorations and toys.",
+  }
+};
+
+function toggleLang() {
+  lang = lang === "mk" ? "en" : "mk";
+  const btn = document.getElementById("translateBtn");
+  if (btn) btn.textContent = lang === "mk" ? "EN" : "МК";
+  applyTranslations();
+}
+
+function applyTranslations() {
+  const t = translations[lang];
+  const toysHead = document.querySelector("#toys h2");
+  const xmasHead = document.querySelector("#christmas h2");
+  const homeHead = document.querySelector("#home h2");
+  const heroTitle = document.querySelector(".hero-text h2");
+  const heroSub = document.querySelector(".hero-text p");
+  if (toysHead) toysHead.textContent = t.toys;
+  if (xmasHead) xmasHead.textContent = t.christmas;
+  if (homeHead) homeHead.textContent = t.home;
+  if (heroTitle) heroTitle.textContent = t.heroTitle;
+  if (heroSub) heroSub.textContent = t.heroSub;
+}
+
+// ── INIT ──────────────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
-    renderProducts(TOY_IMAGES, "toyGrid");
-    renderProducts(HOME_IMAGES, "homeGrid");
+  const isProductPage = document.body.classList.contains("product-page-body");
+
+  updateAuthUI();
+  updateCartUI();
+
+  if (isProductPage) {
+    loadProductPage();
+  } else {
+    renderProducts();
+  }
+
+  // Close cart on overlay click
+  const overlay = document.getElementById("cartOverlay");
+  if (overlay) overlay.addEventListener("click", closeCart);
+
+  // Close modals on overlay click
+  document.querySelectorAll(".modal-overlay").forEach(el => {
+    el.addEventListener("click", (e) => {
+      if (e.target === el) el.classList.remove("open");
+    });
+  });
+
+  // Keyboard shortcuts
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") {
+      closeCart();
+      document.querySelectorAll(".modal-overlay.open").forEach(m => m.classList.remove("open"));
+    }
+  });
 });
