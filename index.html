@@ -1,69 +1,265 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="mk">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Идеја – Играчки и Производи за Дом</title>
-
-    <!-- CSS FILE (FIXED NAME: styles.css) -->
-    <link rel="stylesheet" href="styles.css">
-
-    <!-- GOOGLE FONTS -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Идеја – Играчки и Производи за Дом</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-    <!-- HEADER -->
-    <header>
-        <div class="logo-container">
-            <img src="logo.jpg" alt="Ideja Logo">
-            <h1>Идеја</h1>
-        </div>
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║             HEADER                   ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
+<header>
+  <a class="logo-container" href="index.html">
+    <img src="logo.jpg" alt="Ideja Logo">
+    <h1>Идеја</h1>
+  </a>
 
-        <nav>
-            <a href="#toys">Играчки</a>
-            <a href="#home">Производи за дом</a>
-            <a id="translateBtn">EN</a>
-        </nav>
-    </header>
+  <nav>
+    <a href="#toys">Играчки</a>
+    <a href="#christmas">Christmas Sale</a>
+    <a href="#home">За Дом</a>
+    <a id="translateBtn" onclick="toggleLang()" style="cursor:pointer;">EN</a>
+    <!-- AUTH AREA: shows login button OR user chip -->
+    <div id="authArea" style="display:contents;"></div>
+    <!-- CART BUTTON -->
+    <a class="cart-nav-btn" onclick="openCart()" style="cursor:pointer;">
+      🛒 Корпа <span class="cart-badge" id="cartBadge" style="display:none;">0</span>
+    </a>
+  </nav>
+</header>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="hero-text">
-            <h2>Играчки и производи за дом</h2>
-            <p>Квалитетни производи за секој дом и секое дете.  
-            Огромен избор на подароци, куќни декорации и играчки.</p>
-        </div>
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║           SALE STRIP                 ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
+<div class="sale-strip">
+  🎄 Божиќна акција: попуст на новогодишни елки и фигури Дедо Мраз!
+  <span class="sale-small">Понудата важи до 7ми јануари.</span>
+</div>
 
-        <div class="hero-image">
-            <img src="logo.jpg" alt="Ideja Hero">
-        </div>
-    </section>
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║               HERO                   ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
+<section class="hero">
+  <div class="hero-text">
+    <h2>Играчки и производи за дом</h2>
+    <p>Квалитетни производи за секој дом и секое дете. Огромен избор на подароци, куќни декорации и играчки.</p>
+    <div class="hero-cta">
+      <a href="#toys" class="btn-primary">Разгледај Играчки</a>
+      <a href="#home" class="btn-secondary">Производи за Дом</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="logo.jpg" alt="Ideja Logo">
+  </div>
+</section>
 
-    <!-- TOYS SECTION -->
-    <section id="toys" class="section">
-        <h2>Играчки</h2>
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║            TOYS SECTION              ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
+<section id="toys" class="section">
+  <div class="section-header">
+    <div>
+      <h2>Играчки</h2>
+      <p class="section-subtitle">Квалитетни играчки за деца од сите возрасти</p>
+    </div>
+  </div>
+  <div class="grid" id="toysGrid"></div>
+</section>
 
-        <!-- ID FIXED: toyGrid to match script.js -->
-        <div class="grid" id="toyGrid"></div>
-    </section>
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║         CHRISTMAS SECTION            ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
+<section id="christmas" class="section">
+  <div class="section-header">
+    <div>
+      <h2>Christmas Sale 🎄</h2>
+      <p class="section-subtitle">Специјални попусти на новогодишни украси и декорации</p>
+    </div>
+  </div>
+  <div class="grid" id="christmasGrid"></div>
+</section>
 
-    <!-- HOME SECTION -->
-    <section id="home" class="section">
-        <h2>Производи за Дом</h2>
-        <div class="grid" id="homeGrid"></div>
-    </section>
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║           HOME SECTION               ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
+<section id="home" class="section">
+  <div class="section-header">
+    <div>
+      <h2>Производи за Дом</h2>
+      <p class="section-subtitle">Украси и практични производи за вашиот дом</p>
+    </div>
+  </div>
+  <div class="grid" id="homeGrid"></div>
+</section>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>© 2025 Идеја – Куманово</p>
-        <p>Instagram: <a href="https://www.instagram.com/ideja.kumanovo/" target="_blank">@ideja.kumanovo</a></p>
-    </footer>
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║              FOOTER                  ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
+<footer>
+  <div class="footer-logo">Идеја</div>
+  <div class="footer-divider"></div>
+  <p>© 2025 Идеја – Куманово</p>
+  <p style="margin-top:8px;">
+    Instagram: <a href="https://www.instagram.com/ideja.kumanovo/" target="_blank">@ideja.kumanovo</a>
+  </p>
+</footer>
 
-    <!-- JS FILE (name already correct: script.js) -->
-    <script src="script.js"></script>
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║            CART SIDEBAR              ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h3>🛒 Твојата Корпа</h3>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
 
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">
+      <div class="empty-icon">🛒</div>
+      <p>Корпата е празна</p>
+    </div>
+  </div>
+
+  <div class="cart-footer">
+    <div class="discount-row" id="subtotalRow">
+      <span>Вкупно:</span>
+      <span id="cartSubtotal">0 ден</span>
+    </div>
+    <div class="discount-row" style="display:none;">
+      <span>Попуст -10%:</span>
+      <span id="cartDiscount" style="color:#2ecc71;font-weight:700;"></span>
+    </div>
+    <div class="discount-row savings" style="display:none;">
+      <span>🎉 Заштеда:</span>
+      <span id="cartSavings"></span>
+    </div>
+    <div class="cart-total">
+      <span>За Плаќање:</span>
+      <span class="cart-total-price" id="cartTotal">0 ден</span>
+    </div>
+    <button class="checkout-btn" onclick="doCheckout()">Нарачај сега →</button>
+    <div style="text-align:center;margin-top:10px;">
+      <small style="color:#aaa;font-size:0.78rem;">
+        🔑 <a onclick="openLoginModal()" style="color:var(--burgundy);cursor:pointer;font-weight:700;">Влези</a> за 10% попуст на целата нарачка
+      </small>
+    </div>
+  </div>
+</div>
+
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║           LOGIN MODAL                ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeLoginModal()">✕</button>
+    <div class="modal-logo">
+      <img src="logo.jpg" alt="Ideja">
+    </div>
+    <h3>Добредојде</h3>
+    <p class="modal-sub">Влези или регистрирај се за 10% попуст</p>
+
+    <div class="discount-badge-info">
+      🎉 Регистрираните корисници добиваат <strong>10% попуст</strong> на сите производи!
+    </div>
+
+    <!-- Tabs -->
+    <div class="modal-tabs">
+      <button class="modal-tab active" data-tab="login" onclick="switchTab('login')">Влези</button>
+      <button class="modal-tab" data-tab="register" onclick="switchTab('register')">Регистрирај се</button>
+    </div>
+
+    <!-- Error message -->
+    <div class="modal-error" id="loginError"></div>
+
+    <!-- LOGIN FORM -->
+    <div id="loginForm">
+      <div class="form-group">
+        <label>Корисничко Ime</label>
+        <input type="text" id="loginUsername" placeholder="твоекорисничкоime" autocomplete="username">
+      </div>
+      <div class="form-group">
+        <label>Лозинка</label>
+        <input type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password"
+               onkeydown="if(event.key==='Enter') doLogin()">
+      </div>
+      <button class="btn-primary" onclick="doLogin()" style="width:100%;padding:13px;border-radius:12px;font-size:1rem;">
+        Влези →
+      </button>
+      <p style="text-align:center;margin-top:12px;font-size:0.82rem;color:#aaa;">
+        Демо: корисничко ime <strong>korisnik1</strong> / лозинка <strong>demo123</strong>
+      </p>
+    </div>
+
+    <!-- REGISTER FORM -->
+    <div id="registerForm" style="display:none;">
+      <div class="form-group">
+        <label>Ime и Презиме</label>
+        <input type="text" id="regName" placeholder="Марко Марковски">
+      </div>
+      <div class="form-group">
+        <label>Корисничко Ime</label>
+        <input type="text" id="regUsername" placeholder="markomarkovski">
+      </div>
+      <div class="form-group">
+        <label>Лозинка</label>
+        <input type="password" id="regPassword" placeholder="••••••••" autocomplete="new-password"
+               onkeydown="if(event.key==='Enter') doRegister()">
+      </div>
+      <button class="btn-primary" onclick="doRegister()" style="width:100%;padding:13px;border-radius:12px;font-size:1rem;">
+        Регистрирај се →
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║          CHECKOUT MODAL              ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
+<div class="modal-overlay checkout-modal" id="checkoutModal">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('checkoutModal').classList.remove('open')">✕</button>
+    <h3>🧾 Потврди Нарачка</h3>
+    <p class="modal-sub">Прегледај ја твојата нарачка пред да ја поднесеш</p>
+
+    <div id="checkoutLoginHint" style="display:none;background:#fff5f6;border:1px solid rgba(139,26,46,0.2);border-radius:10px;padding:10px 14px;margin-bottom:16px;font-size:0.85rem;color:var(--burgundy);text-align:center;">
+      💡 <a onclick="document.getElementById('checkoutModal').classList.remove('open');openLoginModal();" style="font-weight:700;cursor:pointer;color:var(--burgundy);">Влези</a> за да добиеш 10% попуст!
+    </div>
+
+    <div id="checkoutItems" style="margin-bottom:12px;"></div>
+
+    <div class="order-summary-total">
+      <span>Вкупно за плаќање:</span>
+      <span id="checkoutTotal"></span>
+    </div>
+
+    <div style="margin-top:20px;display:flex;gap:12px;">
+      <button class="btn-secondary" onclick="document.getElementById('checkoutModal').classList.remove('open');openCart();"
+              style="flex:1;padding:12px;border-radius:12px;">
+        ← Назад
+      </button>
+      <button class="btn-primary" onclick="confirmCheckout()"
+              style="flex:2;padding:12px;border-radius:12px;">
+        ✓ Потврди Нарачка
+      </button>
+    </div>
+
+    <p style="text-align:center;margin-top:14px;font-size:0.8rem;color:#aaa;">
+      Нарачките се обработуваат во рок од 24 часа.<br>
+      📞 Контакт: <a href="https://www.instagram.com/ideja.kumanovo/" target="_blank" style="color:var(--burgundy);">@ideja.kumanovo</a>
+    </p>
+  </div>
+</div>
+
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║          TOAST CONTAINER             ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="script.js"></script>
 </body>
 </html>
