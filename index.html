@@ -20,7 +20,6 @@
 
   <nav>
     <a href="#toys">Играчки</a>
-    <a href="#christmas">Christmas Sale</a>
     <a href="#home">За Дом</a>
     <a id="translateBtn" onclick="toggleLang()" style="cursor:pointer;">EN</a>
     <!-- AUTH AREA: shows login button OR user chip -->
@@ -33,15 +32,7 @@
 </header>
 
 <!-- ╔══════════════════════════════════════╗ -->
-<!-- ║           SALE STRIP                 ║ -->
-<!-- ╚══════════════════════════════════════╝ -->
-<div class="sale-strip">
-  🎄 Божиќна акција: попуст на новогодишни елки и фигури Дедо Мраз!
-  <span class="sale-small">Понудата важи до 7ми јануари.</span>
-</div>
-
-<!-- ╔══════════════════════════════════════╗ -->
-<!-- ║               HERO                   ║ -->
+<!-- ║           HERO                       ║ -->
 <!-- ╚══════════════════════════════════════╝ -->
 <section class="hero">
   <div class="hero-text">
@@ -68,19 +59,6 @@
     </div>
   </div>
   <div class="grid" id="toysGrid"></div>
-</section>
-
-<!-- ╔══════════════════════════════════════╗ -->
-<!-- ║         CHRISTMAS SECTION            ║ -->
-<!-- ╚══════════════════════════════════════╝ -->
-<section id="christmas" class="section">
-  <div class="section-header">
-    <div>
-      <h2>Christmas Sale 🎄</h2>
-      <p class="section-subtitle">Специјални попусти на новогодишни украси и декорации</p>
-    </div>
-  </div>
-  <div class="grid" id="christmasGrid"></div>
 </section>
 
 <!-- ╔══════════════════════════════════════╗ -->
@@ -143,11 +121,6 @@
       <span class="cart-total-price" id="cartTotal">0 ден</span>
     </div>
     <button class="checkout-btn" onclick="doCheckout()">Нарачај сега →</button>
-    <div style="text-align:center;margin-top:10px;">
-      <small style="color:#aaa;font-size:0.78rem;">
-        🔑 <a onclick="openLoginModal()" style="color:var(--burgundy);cursor:pointer;font-weight:700;">Влези</a> за 10% попуст на целата нарачка
-      </small>
-    </div>
   </div>
 </div>
 
@@ -161,11 +134,7 @@
       <img src="logo.jpg" alt="Ideja">
     </div>
     <h3>Добредојде</h3>
-    <p class="modal-sub">Влези или регистрирај се за 10% попуст</p>
-
-    <div class="discount-badge-info">
-      🎉 Регистрираните корисници добиваат <strong>10% попуст</strong> на сите производи!
-    </div>
+    <p class="modal-sub">Влези или регистрирај се</p>
 
     <!-- Tabs -->
     <div class="modal-tabs">
