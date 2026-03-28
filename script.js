@@ -4,107 +4,51 @@
    ============================================= */
 
 // ── PRODUCT DATA ──────────────────────────────
-// Add your real image filenames and prices here!
+// All images from excel photos folder
 const products = [
-  // TOYS
-  {
-    id: 1, category: "toys",
-    name: "Едукативна Играчка – Сортер",
-    price: 590,
-    img: "toy1.jpg",
-    badge: "new",
-    description: "Квалитетна едукативна играчка за деца од 1–3 години. Помага при развој на фини моторни вештини и препознавање бои и форми."
-  },
-  {
-    id: 2, category: "toys",
-    name: "Кукла со Облека",
-    price: 890,
-    img: "toy2.jpg",
-    badge: null,
-    description: "Прекрасна кукла со комплет облека. Идеален подарок за девојчиња. Материјалот е нетоксичен и безбеден за деца."
-  },
-  {
-    id: 3, category: "toys",
-    name: "Конструктор – Коцки",
-    price: 750,
-    img: "toy3.jpg",
-    badge: null,
-    description: "Сет со 100 коцки во различни форми и бои. Ја поттикнува креативноста и просторното размислување кај деца."
-  },
-  {
-    id: 4, category: "toys",
-    name: "Тркачко Возило RC",
-    price: 1490,
-    img: "toy4.jpg",
-    badge: "sale",
-    description: "Радио-контролирано тркачко возило со брзина до 20 км/ч. Батерија за 40+ минути играање. Возраст: 6+."
-  },
-  // CHRISTMAS
-  {
-    id: 5, category: "christmas",
-    name: "Новогодишна Елка 120cm",
-    price: 1990,
-    img: "xmas1.jpg",
-    badge: "sale",
-    description: "Вештачка новогодишна елка 120 cm со реалистичен изглед. Лесна за склопување. Вклучени украсни гранки."
-  },
-  {
-    id: 6, category: "christmas",
-    name: "Фигура Дедо Мраз 60cm",
-    price: 890,
-    img: "xmas2.jpg",
-    badge: "sale",
-    description: "Декоративна фигура на Дедо Мраз висока 60 cm. Идеална за дом, изложбен простор или деловни простории."
-  },
-  {
-    id: 7, category: "christmas",
-    name: "Украсни Светла LED",
-    price: 490,
-    img: "xmas3.jpg",
-    badge: null,
-    description: "10 метри LED светла со 8 режими на светкање. Енергетски ефикасни, безбедни за употреба во затворен и отворен простор."
-  },
-  {
-    id: 8, category: "christmas",
-    name: "Новогодишна Елка 180cm",
-    price: 3490,
-    img: "xmas4.jpg",
-    badge: null,
-    description: "Луксузна вештачка елка 180 cm со густи гранки и меморија-жица. Огнеотпорен материјал, издржлива за повеќе сезони."
-  },
-  // HOME
-  {
-    id: 9, category: "home",
-    name: "Декоративни Перници – Сет 2",
-    price: 690,
-    img: "home1.jpg",
-    badge: null,
-    description: "Сет од 2 декоративни перници со преклопни навлаки. Меки, удобни и лесни за одржување. Достапни во повеќе бои."
-  },
-  {
-    id: 10, category: "home",
-    name: "Ароматична Свеќа – Лаванда",
-    price: 390,
-    img: "home2.jpg",
-    badge: "new",
-    description: "Рачно правена ароматична свеќа со мирис на лаванда. Гори до 40 часа. Совршен подарок или украс за дом."
-  },
-  {
-    id: 11, category: "home",
-    name: "Рамка за Слика 30×40",
-    price: 290,
-    img: "home3.jpg",
-    badge: null,
-    description: "Елегантна дрвена рамка за слика во формат 30×40 cm. Природен дрвен материјал, достапна во светло и темно дрво."
-  },
-  {
-    id: 12, category: "home",
-    name: "Кујнски Сет – Садови",
-    price: 1290,
-    img: "home4.jpg",
-    badge: null,
-    description: "Сет од 5 кујнски садови со антилепачки премаз. Соодветни за индукциски шпорет. Со стаклени капаци и силиконски рачки."
-  },
+  // TOYS - First half of products
+  { id: 1, category: "toys", name: "Играчка Развој 3060", price: 450, img: "excel photos/3060-1.png", badge: "new", description: "Едукативна играчка за развој на фини моторни вештини. Идеална за мали деца од 1-3 години. Со различни форми и текстури за исследување." },
+  { id: 2, category: "toys", name: "Кукла G798A", price: 890, img: "excel photos/G798A.jpg", badge: null, description: "Прекрасна детска кукла со комплетна облека. Нетоксичен материјал, безбеден за деца од сите возрасти. Одличен подарок за девојчиња." },
+  { id: 3, category: "toys", name: "Конструктор Коцки", price: 750, img: "excel photos/9088L.png", badge: null, description: "Сет со 100 разноцветни коцки. Развива креативност и просторно размислување. Подходен за деца од 3 години нагоре." },
+  { id: 4, category: "toys", name: "RC Тркачко Возило", price: 1490, img: "excel photos/Q-91028E.jpg", badge: "sale", description: "Радиоконтролирано возило со висока брзина. Батерија трае 40+ минути. За деца од 6 години. Со дистанцирана контрола." },
+  { id: 5, category: "toys", name: "Играчка Возило CS58", price: 520, img: "excel photos/CS58-E4.jpg", badge: null, description: "Квалитетно направена играчка возило. Безбеден пластичен материјал. Одличен за млади деца за развој на моторни вештини." },
+  { id: 6, category: "toys", name: "Интерактивна Играчка", price: 680, img: "excel photos/HQ241162.jpg", badge: "new", description: "Електрична играчка со светло и звук. Развива интерес и соза за светот. Батеријски погнувана, безбедна за деца." },
+  { id: 7, category: "toys", name: "Играчка Возило Q-91034", price: 580, img: "excel photos/Q-91034.jpg", badge: null, description: "Забавна играчка за деца. Елегантен дизајн, квалитетна конструкција. Идеална за подарок или за дома за деца од 3+ години." },
+  { id: 8, category: "toys", name: "Играчка TMX559", price: 640, img: "excel photos/TMX559-7A.jpg", badge: "sale", description: "Интересна играчка со различни функции. Развива координација и логичко размислување. Препорачливо од 4 години нагоре." },
+  { id: 9, category: "toys", name: "Детска Играчка SY044", price: 490, img: "excel photos/SY044-7.jpg", badge: null, description: "Едукативна играчка за развој. Безбедни материјали, забавна и поучна. Средство за активна и позитивна игра на деца." },
+  { id: 10, category: "toys", name: "Играчка Конструкција Q-91152", price: 710, img: "excel photos/Q-91152E.jpg", badge: null, description: "Конструктивна играчка за развој на креативност. Содржи повеќе делови. За деца од 5+ години. Идеална за активна игра." },
+  { id: 11, category: "toys", name: "Интерактивна Играчка HQ", price: 750, img: "excel photos/HQ241161.jpg", badge: "new", description: "Модерна интерактивна играчка со технолошки функции. Развива логичко размислување и координација. За деца од 4 години." },
+  { id: 12, category: "toys", name: "Играчка SY050", price: 520, img: "excel photos/SY050-2.jpg", badge: null, description: "Забавна детска играчка со едукативна вредност. Квалитетна конструкција. Подходна за деца од 2 години нагоре." },
+  { id: 13, category: "toys", name: "Играчка Образач 09-D18", price: 430, img: "excel photos/09-D18.jpg", badge: null, description: "Образач за развој на моторни вештини. Различни форми за исследување. Безбеден и нетоксичен материјал за мали деца." },
+  { id: 14, category: "toys", name: "Играчка 1399B", price: 560, img: "excel photos/1399B.jpg", badge: "sale", description: "Квалитетна детска играчка со интересен дизајн. Развива креативност. За деца од 3 години нагоре. Препорачена од педагози." },
+  { id: 15, category: "toys", name: "Играчка HQ241306", price: 820, img: "excel photos/HQ241306-36 & HQ241306-24 & HQ241306-18 & HQ241306-12.jpg", badge: null, description: "Комплетен сет од повеќе делови. Развива логичко размислување. За деца од 4-8 години. Со подробни упатства за користење." },
+  { id: 16, category: "toys", name: "Играчка 368-18", price: 490, img: "excel photos/368-18.jpg", badge: null, description: "Едукативна играчка за развој. Забавна и поучна. За деца од 2 години нагоре. Безбедни, хипоалергени материјали." },
+  { id: 17, category: "toys", name: "Играчка 368-19", price: 510, img: "excel photos/368-19.jpg", badge: "new", description: "Образач и развојна играчка. Различни текстури и форми. Стимулира развој на сензори. За мали деца од 1 година." },
+  { id: 18, category: "toys", name: "Играчка 368-24G", price: 540, img: "excel photos/368-24G.jpg", badge: null, description: "Развојна играчка со различни активности. Квалитетна конструкција. За деца од 6 месеци до 2 години." },
+  { id: 19, category: "toys", name: "Играчка 368-29", price: 580, img: "excel photos/368-29.jpg", badge: null, description: "Забавна и активна играчка за мали деца. Развива моторни и когнитивни вештини. Препорачена од експерти за развој." },
+  { id: 20, category: "toys", name: "Играчка 368-30", price: 600, img: "excel photos/368-30.jpg", badge: "sale", description: "Многофункционална развојна играчка. За деца од 1-3 години. Безбедна, сертифицирана и одговарачка на интернационални стандарди." },
+  
+  // HOME - Second half of products
+  { id: 21, category: "home", name: "Декоративни Перници", price: 690, img: "excel photos/JC624-105.jpg", badge: null, description: "Сет од 2 декоративни перници со преклопни навлаки. Меки, удобни и практични. Лесни за одржување. За спална и дневна соба." },
+  { id: 22, category: "home", name: "Ароматична Свеќа Лаванда", price: 390, img: "excel photos/MSS-011A.jpg", badge: "new", description: "Рачно правена ароматична свеќа со природен мирис на лаванда. Гори 40+ часа. Создава топло и пријатно светло. Совршена за релаксација." },
+  { id: 23, category: "home", name: "Дрвена Рамка за Слика", price: 290, img: "excel photos/K183A10.jpg", badge: null, description: "Елегантна дрвена рамка 30×40 cm. Природен материјал. Подходна за семејни слики или уметнички репродукции." },
+  { id: 24, category: "home", name: "Кујнски Сет Садови", price: 1290, img: "excel photos/3905.jpg", badge: null, description: "Комплетен сет од 5 кујнски садови. Антилепачки премаз. За индукциски шпорет. Со стаклени капаци и силиконски рачки." },
+  { id: 25, category: "home", name: "Украс за Дом 3047", price: 540, img: "excel photos/3047-2.png", badge: null, description: "Модерен украс за дом. Направен од висококвалитетни материјали. Хармонира со различни стилови на украсување." },
+  { id: 26, category: "home", name: "Декоративна Скулптура", price: 820, img: "excel photos/C305.png", badge: "new", description: "Современа скулптура за дневна соба. Елегантен дизајн. Израдена од издржлив материјал. Станува центар на внимање во секој простор." },
+  { id: 27, category: "home", name: "Украс 22307-2", price: 480, img: "excel photos/22307-2.jpg", badge: null, description: "Декоративен украс за дом. Фина уметност. Подходен за полици и мебел. Создава топло и пријатно опкружување." },
+  { id: 28, category: "home", name: "Украс 22307-3", price: 500, img: "excel photos/22307-3.jpg", badge: "sale", description: "Елегантен декоративен украс. Природен дизајн. За дневна, спална или канцеларија. Одлична вредност за пари." },
+  { id: 29, category: "home", name: "Украс 22307-4", price: 520, img: "excel photos/22307-4.jpg", badge: null, description: "Модерен украс за украсување на домот. Висока квалитета на изработка. Траен и практичен. За различни просторни слогови." },
+  { id: 30, category: "home", name: "Украсна Композиција 2077", price: 650, img: "excel photos/2077.jpg", badge: null, description: "Комплетна украсна композиција. Вмешува повеќе елементи. За создавање на хармониозна декорација во домот." },
+  { id: 31, category: "home", name: "Украс 2185", price: 580, img: "excel photos/2185.jpg", badge: "new", description: "Фина декоративна композиција. За полици и мебел. Создава уютна атмосфера. Совршена за подарок." },
+  { id: 32, category: "home", name: "Украс 1799A", price: 620, img: "excel photos/1799A.jpg", badge: null, description: "Елегантен украс за дом. Висока уметничка вредност. Подходен за луѓе со софистициран вкус. За дневна и спални." },
+  { id: 33, category: "home", name: "Украс 2004", price: 530, img: "excel photos/2004.jpg", badge: null, description: "Современ украс за дом. Минималистички дизајн. За модерни интеријери. Практичен и пријатен." },
+  { id: 34, category: "home", name: "Украс 2022-106", price: 720, img: "excel photos/2022-106.jpg", badge: "sale", description: "Еуропски стил украс. Висока квалитета. Создава елегантна атмосфера. За експоантни интеријери." },
+  { id: 35, category: "home", name: "Украс 2022-108", price: 740, img: "excel photos/2022-108.jpg", badge: null, description: "Фина украсна композиција. За дневна соба. Хармонира со класична и модерна декорација. Траен материјал." },
+  { id: 36, category: "home", name: "Украс 096-12", price: 420, img: "excel photos/096-12.jpg", badge: null, description: "Едноставен украс за дом. Направен од природни материјали. Неутрална боја. За различни стилови на украсување." },
+  { id: 37, category: "home", name: "Украс 096-22A", price: 450, img: "excel photos/096-22A.jpg", badge: "new", description: "Модерен украс со елегантен дизајн. Практичен и визуелно привлекува. За полици и столови. Совршена за подарок." },
+  { id: 38, category: "home", name: "Украс 096-32", price: 480, img: "excel photos/096-32.jpg", badge: null, description: "Декоративен украс од добро избрани материјали. Создава топла атмосфера. За спална соба и дневна. Долготраен." },
+  { id: 39, category: "home", name: "Украс 12146", price: 560, img: "excel photos/12146.png", badge: null, description: "Висока квалитета украс. Уметнички дизајн. За колеќционари и љубители на лепи предмети. На полица или маса." },
+  { id: 40, category: "home", name: "Украс 12201", price: 590, img: "excel photos/12201.png", badge: "sale", description: "Премиум украс за дом. Елегантна композиција. За лаксузна декорација. Совршена инвестиција во домот." },
 ];
 
 // ── AUTH SYSTEM ──────────────────────────────
@@ -164,10 +108,7 @@ function showToast(msg, icon = "✓") {
 
 // ── PRODUCT CARD BUILDER ──────────────────────
 function buildCard(p) {
-  const discounted = currentUser ? p.price * (1 - DISCOUNT_RATE) : null;
-  const priceHTML = discounted
-    ? `<div class="card-price">${fmt(discounted)} <span class="original-price">${fmt(p.price)}</span></div>`
-    : `<div class="card-price">${fmt(p.price)}</div>`;
+  const priceHTML = `<div class="card-price">${fmt(p.price)}</div>`;
 
   const badgeHTML = p.badge
     ? `<div class="card-badge ${p.badge}">${p.badge === "sale" ? "🔥 Акција" : "Ново"}</div>`
@@ -192,20 +133,17 @@ function buildCard(p) {
 
 function renderProducts() {
   const toysGrid = document.getElementById("toysGrid");
-  const christmasGrid = document.getElementById("christmasGrid");
   const homeGrid = document.getElementById("homeGrid");
 
   if (!toysGrid) return; // not on index page
 
   toysGrid.innerHTML = "";
-  christmasGrid.innerHTML = "";
   homeGrid.innerHTML = "";
 
   products.forEach((p, i) => {
     const card = buildCard(p);
     card.style.animationDelay = `${i * 0.06}s`;
     if (p.category === "toys") toysGrid.appendChild(card);
-    else if (p.category === "christmas") christmasGrid.appendChild(card);
     else if (p.category === "home") homeGrid.appendChild(card);
   });
 }
@@ -323,19 +261,9 @@ function updateCartFooter() {
 
   if (subtotalEl) subtotalEl.textContent = fmt(subtotal);
 
-  if (currentUser && cart.length > 0) {
-    const savings = subtotal * DISCOUNT_RATE;
-    const total = subtotal - savings;
-    if (discountEl) discountEl.parentElement.style.display = "flex";
-    if (savingsEl) savingsEl.parentElement.style.display = "flex";
-    if (discountEl) discountEl.textContent = "-" + fmt(savings);
-    if (savingsEl) savingsEl.textContent = "-" + fmt(savings);
-    if (totalEl) totalEl.textContent = fmt(total);
-  } else {
-    if (discountEl) discountEl.parentElement.style.display = "none";
-    if (savingsEl) savingsEl.parentElement.style.display = "none";
-    if (totalEl) totalEl.textContent = fmt(subtotal);
-  }
+  if (discountEl) discountEl.parentElement.style.display = "none";
+  if (savingsEl) savingsEl.parentElement.style.display = "none";
+  if (totalEl) totalEl.textContent = fmt(subtotal);
 }
 
 function openCart() {
@@ -392,7 +320,7 @@ function doLogin() {
   updateAuthUI();
   renderProducts();
   renderCartItems();
-  showToast(`Добредојде, ${user.name}! 10% попуст активиран 🎉`, "👤");
+  showToast(`Добредојде, ${user.name}! 🎉`, "👤");
 }
 
 function doRegister() {
@@ -430,7 +358,7 @@ function doRegister() {
   updateAuthUI();
   renderProducts();
   renderCartItems();
-  showToast(`Успешна регистрација! Добредојде, ${name}! 10% попуст активиран 🎉`, "✓");
+  showToast(`Успешна регистрација! Добредојде, ${name}! 🎉`, "✓");
 }
 
 function doLogout() {
@@ -450,7 +378,6 @@ function updateAuthUI() {
     authArea.innerHTML = `
       <div class="user-chip" onclick="doLogout()" title="Клик за одјава">
         👤 ${currentUser.name}
-        <span class="discount-tag">-10%</span>
       </div>`;
   } else {
     authArea.innerHTML = `
@@ -466,8 +393,7 @@ function doCheckout() {
   }
 
   const subtotal = getCartTotal();
-  const discount = currentUser ? subtotal * DISCOUNT_RATE : 0;
-  const total = subtotal - discount;
+  const total = subtotal;
 
   let itemsHTML = cart.map(item => `
     <div class="order-summary-item">
@@ -476,23 +402,11 @@ function doCheckout() {
     </div>
   `).join("");
 
-  if (currentUser && discount > 0) {
-    itemsHTML += `
-      <div class="order-summary-item" style="color:#2ecc71;font-weight:700;">
-        <span>🎉 Попуст -10% (${currentUser.name})</span>
-        <span>-${fmt(discount)}</span>
-      </div>`;
-  }
-
   const modal = document.getElementById("checkoutModal");
   document.getElementById("checkoutItems").innerHTML = itemsHTML;
   document.getElementById("checkoutTotal").textContent = fmt(total);
 
-  if (!currentUser) {
-    document.getElementById("checkoutLoginHint").style.display = "block";
-  } else {
-    document.getElementById("checkoutLoginHint").style.display = "none";
-  }
+  document.getElementById("checkoutLoginHint").style.display = "none";
 
   closeCart();
   modal.classList.add("open");
@@ -534,10 +448,7 @@ function loadProductPage() {
     document.getElementById("prodImage").alt = p.name;
     document.title = `Идеја – ${p.name}`;
 
-    const discountedPrice = currentUser ? p.price * (1 - DISCOUNT_RATE) : null;
-    const priceHTML = discountedPrice
-      ? `<div class="prod-price-large">${fmt(discountedPrice)} <span style="font-size:1rem;color:#aaa;text-decoration:line-through;font-family:Nunito,sans-serif;">${fmt(p.price)}</span></div>`
-      : `<div class="prod-price-large">${fmt(p.price)}</div>`;
+    const priceHTML = `<div class="prod-price-large">${fmt(p.price)}</div>`;
 
     document.getElementById("prodDesc").innerHTML = `
       ${priceHTML}
@@ -569,14 +480,12 @@ let lang = "mk";
 const translations = {
   mk: {
     toys: "Играчки",
-    christmas: "Christmas Sale 🎄",
     home: "Производи за Дом",
     heroTitle: "Играчки и производи за дом",
     heroSub: "Квалитетни производи за секој дом и секое дете. Огромен избор на подароци, куќни декорации и играчки.",
   },
   en: {
     toys: "Toys",
-    christmas: "Christmas Sale 🎄",
     home: "Home Products",
     heroTitle: "Toys & Home Products",
     heroSub: "Quality products for every home and every child. Huge selection of gifts, home decorations and toys.",
@@ -593,12 +502,10 @@ function toggleLang() {
 function applyTranslations() {
   const t = translations[lang];
   const toysHead = document.querySelector("#toys h2");
-  const xmasHead = document.querySelector("#christmas h2");
   const homeHead = document.querySelector("#home h2");
   const heroTitle = document.querySelector(".hero-text h2");
   const heroSub = document.querySelector(".hero-text p");
   if (toysHead) toysHead.textContent = t.toys;
-  if (xmasHead) xmasHead.textContent = t.christmas;
   if (homeHead) homeHead.textContent = t.home;
   if (heroTitle) heroTitle.textContent = t.heroTitle;
   if (heroSub) heroSub.textContent = t.heroSub;
